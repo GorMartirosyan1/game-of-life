@@ -1,13 +1,12 @@
-class Predator {
+class Predator extends LivingCreature {
     constructor(x, y, index) {
         this.x = x;
         this.y = y;
         this.energy = 8;
         this.index = index;
         this.directions = [];
-    }
 
-    getNewCoordinates() {
+          getNewCoordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -19,7 +18,6 @@ class Predator {
             [this.x + 1, this.y + 1]
         ];
     }
-
     chooseCell(character) {
         var found = [];
         this.getNewCoordinates()
@@ -43,6 +41,16 @@ class Predator {
             matrix[newCell[1]][newCell[0]] = 3;
         }
     }
+
+}
+
+
+
+
+
+   
+
+
 
     eat() {
         let foods = this.chooseCell(2)

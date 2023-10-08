@@ -24,7 +24,7 @@ var predatorArr = [];
 var takardArr = [];
 var kaycakArr = [];
 function setup() {
-    character(1,100)
+    character(1,50)
     character(2,10)
     character(3,5)
     character(4,3)
@@ -95,14 +95,14 @@ function draw() {
         grassEaterArr[i].eat();
     }
 
-    for (var i in predatorArr) {
-        predatorArr[i].eat();
-    }
-    for (var i in takardArr) {
-        takardArr[i].eat();
-    }
-    for (var i in kaycakArr) {
-        // kaycakArr[i].eat();
-        kaycakArr[i].move();
-    }
+    // for (var i in predatorArr) {
+    //     predatorArr[i].eat();
+    // }
+    // for (var i in takardArr) {
+    //     takardArr[i].eat();
+    // }
+    // for (var i in kaycakArr) {
+    //     // kaycakArr[i].eat();
+    //     kaycakArr[i].move();
+    // }
 }
