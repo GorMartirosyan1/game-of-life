@@ -11,6 +11,12 @@ for (let i = 0; i < n; i++) {
     }
 }
 
+Grass = require('./class.js')
+GrassEater = require('./GrassEater.js')
+Predator = require('./Predator.js')
+Takard = require('./takard.js')
+Kaycak = require('./kaycakjs')
+
 function character(index, count) {
     for (let i = 0; i < count; i++) {
         var w = Math.floor(random(0, n));
@@ -18,6 +24,7 @@ function character(index, count) {
         matrix[w][v] = index;
     }
 }
+
 var grassArr = [];
 var grassEaterArr = [];
 var predatorArr = [];

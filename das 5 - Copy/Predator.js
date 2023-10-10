@@ -1,11 +1,14 @@
-class Predator extends LivingCreature {
+let LivingCreature = require('./LivingCreature')
+
+
+module.exports =  class Predator extends LivingCreature {
     constructor(x, y, index) {
         this.x = x;
         this.y = y;
         this.energy = 8;
         this.index = index;
         this.directions = [];
-
+    }
           getNewCoordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -41,17 +44,6 @@ class Predator extends LivingCreature {
             matrix[newCell[1]][newCell[0]] = 3;
         }
     }
-
-}
-
-
-
-
-
-   
-
-
-
     eat() {
         let foods = this.chooseCell(2)
         let food = random(foods)
@@ -106,3 +98,14 @@ class Predator extends LivingCreature {
         }
     }
 }
+
+
+
+
+
+
+   
+
+
+
+   

@@ -1,4 +1,6 @@
-class Takard {
+let LivingCreature = require('./LivingCreature')
+
+module.exports =  class Takard {
     constructor(x, y) {
         this.x = x;
         this.y = y;
