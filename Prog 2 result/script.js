@@ -102,14 +102,14 @@ function draw() {
         grassEaterArr[i].eat();
     }
 
-    // for (var i in predatorArr) {
-    //     predatorArr[i].eat();
-    // }
-    // for (var i in takardArr) {
-    //     takardArr[i].eat();
-    // }
-    // for (var i in kaycakArr) {
-    //     // kaycakArr[i].eat();
-    //     kaycakArr[i].move();
-    // }
+    for (var i in predatorArr) {
+        predatorArr[i].eat();
+    }
+    for (var i in takardArr) {
+        takardArr[i].eat();
+    }
+    for (var i in kaycakArr) {
+        // kaycakArr[i].eat();
+        kaycakArr[i].move();
+    }
 }
