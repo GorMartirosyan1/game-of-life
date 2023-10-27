@@ -53,7 +53,7 @@ function matrixEditor() {
             matrix[i].push(0)
         }
     }
-        character(1,50)
+        character(1,1000)
         character(2,20)
         character(3,5)
         character(4,3)
