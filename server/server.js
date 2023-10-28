@@ -21,20 +21,11 @@ server.listen(3000, function(){
 
     });
 
-    io.on('connection', function (socket) {
+io.on('connection', function (socket) {
 
-        socket.emit("name", "Gor");
-        
-        
-        // socket.on("send message", function (data) {
-        
-        // messages.push(data);
-        
-        // io.sockets.emit("display message", data);
-        
-        // });
-        
-        });
+    socket.emit("name", "Gor");
+    socket.on("pause game", handlePauseOrStartGame)
+});
 
 Grass = require('./class')
 GrassEater = require('./GrassEater.js')
@@ -44,6 +35,7 @@ Kaycak = require('./kaycak.js')
 matrix = [];
 n = 20
 m = 30
+STopGame = false;
 
 function matrixEditor() {
 
@@ -102,33 +94,41 @@ function createObj() {
             }
         } 
     }
-
 }
 
 createObj()
 
 
 function start() {
-    for (var i in grassArr) {
-        grassArr[i].mul();
+    if(!STopGame){
+        for (var i in grassArr) {
+            grassArr[i].mul();
+        }
+    
+        for (var i in grassEaterArr) {
+            grassEaterArr[i].eat();
+        }
+    
+        for (var i in predatorArr) {
+            predatorArr[i].eat();
+        }
+        for (var i in takardArr) {
+            takardArr[i].eat();
+        }
+        for (var i in kaycakArr) {
+            // kaycakArr[i].eat();
+            kaycakArr[i].move();
+        }
+        // console.log(matrix)
+        io.sockets.emit("esim", matrix);
     }
-
-    for (var i in grassEaterArr) {
-        grassEaterArr[i].eat();
-    }
-
-    for (var i in predatorArr) {
-        predatorArr[i].eat();
-    }
-    for (var i in takardArr) {
-        takardArr[i].eat();
-    }
-    for (var i in kaycakArr) {
-        // kaycakArr[i].eat();
-        kaycakArr[i].move();
-    }
-    // console.log(matrix)
-    io.sockets.emit("esim", matrix);
+  
 }
 
+
 setInterval(start, 1000)
+
+
+function handlePauseOrStartGame(ifPaused) {
+    STopGame = ifPaused;
+}
