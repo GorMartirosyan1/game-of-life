@@ -2,7 +2,16 @@ let Winter = document.getElementById("Winter")
 let Spring = document.getElementById("Spring")
 let Summer = document.getElementById("Summer")
 let Autumn = document.getElementById("Autumn")
-let Boom = document.getElementById("BOOM")
+
+let grassStatics = document.getElementById('grass')
+let grassEaterStatics = document.getElementById('grassEater')
+console.log(grassEaterStatics)
+let predatorStatics = document.getElementById('predator')
+let takardStatics = document.getElementById('takard')
+let kaycakStatics = document.getElementById('kaycak')
+
+var socket = io();
+socket.on("statics", Stats)
 
 
 Winter.style.backgroundColor = "#ABD1DD"
@@ -19,10 +28,19 @@ let colorObj = {
     black: "black"
 }
 
+function Stats(stats) {
+    console.log("asd")
+    console.log(stats)
+    console.log(JSON.parse(stats).Grass)
+    grassStatics.innerHTML ="Grass - " + JSON.parse(stats).Grass
+    grassEaterStatics.innerHTML ="GrassEater - " + JSON.parse(stats).GrassEater
+    predatorStatics.innerHTML ="Predator - " + JSON.parse(stats).Predator
+    takardStatics.innerHTML ="Takard - " + JSON.parse(stats).Takard
+    kaycakStatics.innerHTML ="Kaycak - " + JSON.parse(stats).Kaycak
+}
 
 
 
-var socket = io();
 
 
 socket.on("esim", myDraw)

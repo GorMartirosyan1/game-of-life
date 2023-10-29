@@ -100,6 +100,7 @@ createObj()
 
 
 function start() {
+
     if(!STopGame){
         for (var i in grassArr) {
             grassArr[i].mul();
@@ -122,7 +123,18 @@ function start() {
         // console.log(matrix)
         io.sockets.emit("esim", matrix);
     }
-  
+    statics = {
+        "Grass": grassArr.length,
+        "GrassEater": grassEaterArr.length,
+        "Predator": predatorArr.length,
+        "Takard": takardArr.length,
+        "Kaycak": kaycakArr.length
+    }
+    
+    json = JSON.stringify(statics);
+
+fs.writeFileSync("statics.json", json);
+
 }
 
 
@@ -131,4 +143,26 @@ setInterval(start, 1000)
 
 function handlePauseOrStartGame(ifPaused) {
     STopGame = ifPaused;
+}
+
+
+
+var fs = require('fs');
+
+let statics = {
+    "Grass": grassArr.length,
+    "GrassEater": grassEaterArr.length,
+    "Predator": predatorArr.length,
+    "Takard": takardArr.length,
+    "Kaycak": kaycakArr.length
+}
+
+
+
+
+setInterval(sendState, 3000)
+
+function sendState(){
+      let text =   fs.readFileSync("statics.json").toString()
+      io.sockets.emit("statics", text)
 }
